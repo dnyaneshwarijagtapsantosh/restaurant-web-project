@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block home_status %}active{% endblock home_status %}
+{% load static %}
+
+{% block slider %}
+<section class="slider_section">
+  <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static 'images/main.jpg' %}" class="d-block w-100" alt="The Cake Studio">
+        <div class="carousel-caption d-md-block text-left">
+          <h1>The Cake Studio</h1>
+          <p>
+            Welcome to The Cake Studio – where every cake is a masterpiece!
+          </p>
+          <a href="#menu" class="btn btn-warning">Order Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock slider %}
+
+{% block main %}
+
+<!-- FOOD SECTION -->
+<section class="food_section layout_padding-bottom" id="menu">
+  <div class="container">
+    <div class="heading_container heading_center">
+      <h2>Our Menu</h2>
+    </div>
+
+    <div class="row">
+      {% for j in items %}
+      <div class="col-sm-6 col-lg-4">
+        <div class="box">
+          <div class="img-box">
+            <img src="/media/{{j.Image}}">
+          </div>
+          <div class="detail-box">
+            <h5>{{j.Item_name}}</h5>
+            <p>{{j.description}}</p>
+            <div class="options">
+              <h6>₹{{j.Price}}</h6>
+              <button class="btn btn-success add-to-cart"
+                data-item-id="{{j.id}}"
+                data-item-name="{{j.Item_name}}"
+                data-item-price="{{j.Price}}">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ✅ BILL SECTION -->
+<div id="bill" style="display:none; border:2px solid black; padding:20px; width:350px; margin:40px auto;">
+  <h3 style="text-align:center;">🧾 Cake Shop Bill</h3>
+  <p><b>Item:</b> <span id="bill-item-name"></span></p>
+  <p><b>Price:</b> ₹<span id="bill-item-price"></span></p>
+  <hr>
+  <p><b>Total:</b> ₹<span id="bill-total"></span></p>
+  <button class="btn btn-primary" onclick="printBill()">Print Bill</button>
+</div>
+
+<!-- ✅ JAVASCRIPT -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  document.querySelectorAll(".add-to-cart").forEach(btn => {
+    btn.addEventListener("click", function () {
+
+      const name = this.dataset.itemName;
+      const price = this.dataset.itemPrice;
+
+      document.getElementById("b-name").innerText = name;
+      document.getElementById("b-price").innerText = price;
+      document.getElementById("b-total").innerText = price;
+
+      document.getElementById("bill").style.display = "block";
+
+      alert("✅ Order Placed Successfully");
+    });
+  });
+
+});
+</script>
+
+
+
+
+{% endblock main %}
