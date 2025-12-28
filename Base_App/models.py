@@ -61,15 +61,26 @@ class Cart(models.Model):
         return f"{self.user.username} - {self.item.Item_name}"
 
 
+from django.db import models
+
 class Order(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     item_name = models.CharField(max_length=100)
-    quantity = models.IntegerField()
     price = models.FloatField()
-    total = models.FloatField()
-    delivery_address = models.TextField()
+    quantity = models.IntegerField()
+    address = models.TextField()
     payment_method = models.CharField(max_length=20)
-    ordered_at = models.DateTimeField(auto_now_add=True)
+    order_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.item_name
+
+
+from django.db import models
+
+class Cake(models.Model):
+    name = models.CharField(max_length=100)
+    price = models.IntegerField()
+    description = models.TextField()
+
+    def __str__(self):
+        return self.name

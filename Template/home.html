@@ -23,7 +23,7 @@
 
 {% block main %}
 
-<!-- FOOD SECTION -->
+<!-- CAKE SECTION -->
 <section class="food_section layout_padding-bottom" id="menu">
   <div class="container">
     <div class="heading_container heading_center">
@@ -42,12 +42,7 @@
             <p>{{j.description}}</p>
             <div class="options">
               <h6>₹{{j.Price}}</h6>
-              <button class="btn btn-success add-to-cart"
-                data-item-id="{{j.id}}"
-                data-item-name="{{j.Item_name}}"
-                data-item-price="{{j.Price}}">
-                Add to Cart
-              </button>
+             
             </div>
           </div>
         </div>
@@ -57,7 +52,7 @@
   </div>
 </section>
 
-<!-- ✅ BILL SECTION -->
+<!--  BILL SECTION -->
 <div id="bill" style="display:none; border:2px solid black; padding:20px; width:350px; margin:40px auto;">
   <h3 style="text-align:center;">🧾 Cake Shop Bill</h3>
   <p><b>Item:</b> <span id="bill-item-name"></span></p>
@@ -67,7 +62,7 @@
   <button class="btn btn-primary" onclick="printBill()">Print Bill</button>
 </div>
 
-<!-- ✅ JAVASCRIPT -->
+<!--  JAVASCRIPT -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -83,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       document.getElementById("bill").style.display = "block";
 
-      alert("✅ Order Placed Successfully");
+      alert(" Order Placed Successfully");
     });
   });
 

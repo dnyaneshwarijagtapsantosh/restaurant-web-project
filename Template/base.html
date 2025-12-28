@@ -3,12 +3,12 @@
 {% load static %}
 
 <head>
-  <!-- Basic -->
+  
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <!-- Mobile Metas -->
+  
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <!-- Site Metas -->
+ 
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="author" content="" />
@@ -16,14 +16,14 @@
 
   <title> Feane </title>
 
-  <!-- bootstrap core css -->
+  
   <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
 
-  <!--owl slider stylesheet -->
+
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-  <!-- nice select  -->
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
-  <!-- font awesome style -->
+ 
   <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" />
 
   <!-- Custom styles for this template -->
@@ -40,7 +40,7 @@
       <img src="{% static 'images/hero-bg.jpg' %}" alt="">
     </div>
 
-    <!-- header section strats -->
+    <!-- header section  -->
     <header class="header_section">
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
@@ -65,31 +65,27 @@
               <li class="nav-item {% block about_status %}{% endblock about_status %}">
                 <a class="nav-link" href="{% url "About" %}">About</a>
               </li>
-              <li class="nav-item {% block table_status %}{% endblock table_status %}">
-                <a class="nav-link" href="{% url "Book_Table" %}">Book Table</a>
-              </li>
+              
               <li class="nav-item {% block feedback_status %}{% endblock feedback_status %}">
                 <a class="nav-link" href="{% url "Feedback_Form" %}">Feedback</a>
               </li>
             </ul>
             <div class="user_option">
-              <div class="user_option">
-                {% if user.is_authenticated %}
-                  <span style="background-color: #f8c6c6; color: #000; padding: 5px 10px; border-radius: 5px; font-weight: bold;">
-                    {{ user.username }}
-                  </span>
-                  <a href="{% url 'logout' %}" class="btn btn-secondary">Logout</a>
-                  
-                {% else %}
-                  <a href="{% url 'login' %}" class="btn order_online">Login</a>
-                {% endif %}
-              </div>
-            </div>
+  {% if user.is_authenticated %}
+    <span style="background-color:#f8c6c6; padding:5px 10px; border-radius:5px;">
+      {{ user.username }}
+    </span>
+    <a href="{% url 'logout' %}" class="btn btn-secondary">Logout</a>
+  {% else %}
+    <a href="{% url 'login' %}" class="btn btn-danger">Login</a>
+  {% endif %}
+</div>
+
           </div>
         </nav>
       </div>
     </header>
-    <!-- end header section -->
+
 
     <!-- Cart Popup Modal -->
     <div id="cart-modal" class="modal fade" tabindex="-1" role="dialog">
@@ -103,7 +99,7 @@
           </div>
           <div class="modal-body">
             <ul id="cart-items-list">
-              <!-- Cart items will be dynamically loaded here -->
+             
             </ul>
           </div>
           <div class="modal-footer">
@@ -137,13 +133,13 @@
               <a href="">
                 <i class="fa fa-phone" aria-hidden="true"></i>
                 <span>
-                  Call +01 1234567890
+                  Call 7666501816/7058454819
                 </span>
               </a>
               <a href="">
                 <i class="fa fa-envelope" aria-hidden="true"></i>
                 <span>
-                  demo@gmail.com
+                  bakehouse@gmail.com
                 </span>
               </a>
             </div>
@@ -216,9 +212,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
   <!-- custom js -->
   <script src="{% static 'js/custom.js' %} "></script>
-  <!-- Google Map -->
   
-  <!-- End Google Map -->
    
 </body>
 

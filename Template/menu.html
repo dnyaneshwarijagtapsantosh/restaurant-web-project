@@ -1,73 +1,109 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block class %}class="sub_page"{% endblock class %}
 {% block menu_status %}active{% endblock menu_status %}
-{% load static %}
 
 {% block main %}
 
-  <!-- food section -->
+<!-- ================= CUSTOM FIX CSS ================= -->
+<style>
+/* ===== FINAL FIX FOR ORDER NOW BUTTON ===== */
 
-  <section class="food_section layout_padding-bottom">
-    <div class="container">
-      <div class="heading_container heading_center">
-        <h2>
-          Our Menu
-        </h2>
-      </div>
+.food_section .box {
+    overflow: visible !important;
+}
 
-      <ul class="filters_menu">
-        <li class="active" data-filter="*">All</li>
-        {% for i in list %}
-        <li data-filter=".{{i.Category_name}}">{{i.Category_name}}</li>
-        {% endfor %}
-      </ul>
+.food_section .detail-box {
+    overflow: visible !important;
+    padding-bottom: 30px;
+}
 
-      <div class="filters-content">
-        <div class="row grid">
-          {% for j in items %}
-          <div class="col-sm-6 col-lg-4 all {{j.Category}}">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="/media/{{j.Image}} " alt="{{j.Image}}">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    {{j.Item_name}}
-                  </h5>
-                  <p>
-                    {{j.description}}
-                  </p>
-                  <div class="options">
-  <h6 class="price">
-    ₹ {{j.Price}}
-  </h6>
+/* options row */
+.food_section .options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
 
-  <a href="{% url 'order_page' %}" class="btn btn-warning order-btn">
-    Order Now
-  </a>
-</div>
+/* price */
+.food_section .options h6 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
 
+/* Order Now button – force proper shape */
+.food_section .options a {
+    position: static !important;
+    height: auto !important;
+    width: auto !important;
+    padding: 8px 18px !important;
+    border-radius: 25px !important;
+    line-height: normal !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none !important;
+}
+</style>
+<!-- ================================================== -->
+
+<!-- food section -->
+<section class="food_section layout_padding-bottom">
+  <div class="container">
+
+    <div class="heading_container heading_center">
+      <h2>Our Menu</h2>
+    </div>
+
+    <ul class="filters_menu">
+      <li class="active" data-filter="*">All</li>
+      {% for i in list %}
+      <li data-filter=".{{ i.Category_name }}">{{ i.Category_name }}</li>
+      {% endfor %}
+    </ul>
+
+    <div class="filters-content">
+      <div class="row grid">
+        {% for j in items %}
+        <div class="col-sm-6 col-lg-4 all {{ j.Category }}">
+          <div class="box">
+            <div>
+
+              <div class="img-box">
+                <img src="/media/{{ j.Image }}" alt="{{ j.Item_name }}">
+              </div>
+
+              <div class="detail-box">
+                <h5>{{ j.Item_name }}</h5>
+
+                <p>{{ j.description }}</p>
+
+                <div class="options">
+                  <h6 class="price">₹ {{ j.Price }}</h6>
+
+                  <a href="{% url 'order_page' %}"
+                     class="btn btn-warning order-btn">
+                     Order Now
+                  </a>
                 </div>
               </div>
+
             </div>
           </div>
-          {% endfor %}
         </div>
-      </div>
-      <div class="btn-box">
-        <a href="">
-          View More
-        </a>
+        {% endfor %}
       </div>
     </div>
-  </section>
 
-  <!-- end food section -->
+    <div class="btn-box">
+      <a href="">View More</a>
+    </div>
 
-  
-  
+  </div>
+</section>
+<!-- end food section -->
 
 {% endblock main %}
-

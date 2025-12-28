@@ -3,19 +3,22 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from Base_App.views import *
+from Base_App import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin_pannel'),
-    path('login/', LoginView.as_view(), name='login'),
-    path('signup/', SignupView, name='signup'),
-    path('logout/', LogoutView, name='logout'),
+    path('login/', views.login_view, name='login'),
+    path('signup/', views.signup_view, name='signup'),
+    path('logout/', views.logout_view, name='logout'),
+
     path('', HomeView, name='Home'),
-    path('book_table/', BookTableView, name='Book_Table'),
+   
     path('menu/', MenuView, name='Menu'),
     path('about/', AboutView, name='About'),
     path('feedback/', FeedbackView, name='Feedback_Form'),
     
- path('order/', order_page, name='order_page'),
+ path('order/', views.order_page, name='order_page'),
 
 ]
 

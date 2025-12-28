@@ -14,26 +14,22 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 
-# Load environment variables from the .env file
-load_dotenv()
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+
+load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
+
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
+
 SECRET_KEY = 'django-insecure-t_!n%3ph(-bpkd2+z2!zujx+6r_x%&3%allmra#8#x0v*iogzf'
 
-# SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
-
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -48,7 +44,7 @@ INSTALLED_APPS = [
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 LOGIN_REDIRECT_URL = '/'
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MIDDLEWARE = [
@@ -83,12 +79,10 @@ WSGI_APPLICATION = 'Resturant_Project.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'cake_db',   # MySQL Workbench मध्ये तयार केलेला DB
+        'NAME': 'cake_shop',  
         'USER': 'root',
         'PASSWORD': 'root',
         'HOST': 'localhost',
@@ -128,10 +122,6 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
-
-# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 STATIC_URL = 'static/'
 
@@ -150,16 +140,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # settings.py
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'  # Use your email provider's SMTP server
-EMAIL_PORT = 587  # Standard port for TLS encryption
+EMAIL_HOST = 'smtp.gmail.com' 
+EMAIL_PORT = 587  
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'mishra572002@gmail.com'  # Replace with your email address
-EMAIL_HOST_PASSWORD = 'your-email-password'  # Replace with your email password
-DEFAULT_FROM_EMAIL = 'your-email@gmail.com'  # The sender's email
+EMAIL_HOST_USER = 'mishra572002@gmail.com'  
+EMAIL_HOST_PASSWORD = 'your-email-password'  
+DEFAULT_FROM_EMAIL = 'your-email@gmail.com'  
 
-# Retrieve the Google Maps API key from environment variables
+
 GOOGLE_MAPS_API_KEY = os.getenv('GOOGLE_MAPS_API_KEY')
 
 LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = '/'  # Redirect after successful login
-LOGOUT_REDIRECT_URL = '/login/'  # Redirect after logout
+LOGIN_REDIRECT_URL = '/'  
+LOGOUT_REDIRECT_URL = '/login/'  
